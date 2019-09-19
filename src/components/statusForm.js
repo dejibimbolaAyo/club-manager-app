@@ -3,6 +3,11 @@ import {Button, Form, TextArea} from 'semantic-ui-react'
 
 const SetStatus = () => {
   const [status, setStatus] = useState('');
+  const [isLoading, setIsLoading] = useState(false)
+
+  // Call API to store status
+
+
   useEffect(() => {
     return ()=> {}
   }, [status])

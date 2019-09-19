@@ -1,13 +1,8 @@
-const _ = require('lodash')
+// const _ = require('lodash')
 
 export const initialMemberState = {
     count: 0,
-    list: [
-        {
-            name: "Abimbola Ayodeji"
-        }
-    ],
-    isLoading: true,
+    list: []
 }
 
 export const memberActions = {
@@ -30,31 +25,45 @@ export const memberActions = {
 // Initiate request
 // Complete request
 
+let count = 0
 const memberReducer = (state, action) => {
     switch (action.type) {
         case memberActions.loadAllMembers:
-            console.log("WHat got to reducer", action.data)
             return {...state, list:action.data}
-            //  return state;
-            // return Object.assign({}, state, {list:members.list})
-            // return state
+
+        case memberActions.loadFriendRequest:
+            const oldMembers = state.list
+            const newMember = action.data
+
+            let updatedMembers = []
+
+            if(oldMembers.some((oldMember) => oldMember._id === newMember._id)) {
+                updatedMembers = oldMembers
+            } else {
+                updatedMembers = oldMembers
+                updatedMembers.push(newMember)
+            }
+
+            return {...state, list: updatedMembers}
+
         case memberActions.resetMembers:
-            return Object.assign({}, initialMemberState)
+            return {...state, initialMemberState}
+
         case memberActions.acceptFriendRequest:
-            console.log("Accept friend request")
-            return state;
+            return {...state, list: state.list.filter((member) => member._id !== action.data)}
+
         case memberActions.sendFriendRequest:
             console.log("Send friend request")
             return state;
+
         case memberActions.declineFriendRequest:
-            console.log("Decline friend request")
-            return state;
+            return {...state, list: state.list.filter((member) => member._id !== action.data)}
+
         case memberActions.isLoading:
             return {...state, isLoading: action.data};
+
         case memberActions.completeRequest:
             console.log("Complete request")
-            return state;
-        default:
             return state;
     }
 }

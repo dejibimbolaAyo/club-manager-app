@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
-import {Message, Container, Segment} from 'semantic-ui-react'
+import {Message, Segment} from 'semantic-ui-react'
 
 const ChatMessages = () => {
-  const [chatMessages, setChatMessaged] = useState([]);
+  const [chatMessages] = useState([]);
   return (
-    <Segment>
-      <Container className="chat-wrapper">
+      // <Container className="chat-wrapper">
+    <Segment className="chat-wrapper">
         {chatMessages.length > 0
           ? chatMessages.map((chatMessage) => {
             return <Message info>
@@ -13,13 +13,76 @@ const ChatMessages = () => {
               <p>{chatMessage.message}</p>
             </Message>
           })
-          : <Message info>
+          : <>
+          <Message info>
             <Message.Header>No broadcast</Message.Header>
             <p>Send your first broadcast by typing in a message below.</p>
           </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          <Message info>
+            <Message.Header>No broadcast</Message.Header>
+            <p>Send your first broadcast by typing in a message below.</p>
+          </Message>
+          
+          </>
         }
-      </Container>
     </Segment>
+      // </Container>
   )
 }
 

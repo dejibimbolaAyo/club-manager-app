@@ -6,7 +6,7 @@ export const initialAuthState = {
 
 export const authActions = {
   requestAuth: "REQUEST_AUTH",
-  fetchAuthDetails: "FETCH_AUTH_DATA",
+  setLoggedOut: "SET_LOGGED_OUT",
   setAuthDetails: "SET_AUTH_DETAILS",
   unsetAuthDetails: "UNSET_AUTH_DETAILS",
   resetToken: "RESET_TOKEN",
@@ -24,8 +24,6 @@ const authReducer = (state, action) => {
         token: action.data.token
       }
       return newState
-
-    case authActions.fetchAuthDetails:
 
     case authActions.resetToken:
       return {

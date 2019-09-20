@@ -1,11 +1,11 @@
 import React, {useContext, useEffect, useState, useReducer} from 'react'
 import {navigate} from '@reach/router'
-import {Container, Divider, Segment, Sticky} from 'semantic-ui-react'
+import {Container, Divider, Segment, Sticky, Button} from 'semantic-ui-react'
 import Layout from '../components/layout'
 import NewMembers from '../components/newMembers'
-import ChatMessages from '../components/chatMessages'
+import ClubMemberList from '../components/clubMemberList'
 import ComposeMessage from '../components/composeMessage'
-import ContactList from '../components/contactList'
+import ClubList from '../components/clubList'
 import StatusBar from '../components/statusBar'
 import FriendSearch from '../components/friendSearch';
 import FullScreenLoader from '../components/fullScreenLoader'
@@ -14,36 +14,30 @@ import {useStateValue} from '../contexts/stateContext'
 
 const leftContent = <div>
   <Container>
-    <Divider horizontal>What's your status?</Divider>
+    <Divider horizontal>Account</Divider>
     <Segment>
       <StatusBar></StatusBar>
     </Segment>
-    <Divider horizontal>Contacts</Divider>
+    <Divider horizontal>Club list</Divider>
     {/* TODO: Merge the functionality of contact search with general member search */}
     <Segment className="contact-list">
-      <ContactList></ContactList>
+      <ClubList></ClubList>
     </Segment>
-    <Divider horizontal>Search for a friend</Divider>
-    <Segment className="left-content-container-top">
-      <FriendSearch></FriendSearch>
-    </Segment>
-    <Divider horizontal>Friend requests</Divider>
-    <Segment className="left-content-container-bottom">
-      <NewMembers></NewMembers>
-    </Segment>
+    <Divider horizontal>Actions</Divider>
+    <Segment>
+        <Button basic color="blue" icon="create">New Club</Button>
+        <Button basic color="green" icon="user">Profile</Button>
+        <Button basic color="red" icon="logout">Logout</Button>
+      </Segment>
   </Container>
 </div>
 
 const middleContent = <div>
-  <Sticky>
     <Container>
-      {/* ChatMessage */}
-      <Divider horizontal>Broadcasts</Divider>
-      <ChatMessages></ChatMessages>
-      <Divider horizontal>Compose broadcast message</Divider>
-      <ComposeMessage></ComposeMessage>
+      <Divider horizontal>Club Members</Divider>
+      <ClubMemberList></ClubMemberList>
+
     </Container>
-  </Sticky>
 </div>
 
 const rightContent = <div>
@@ -52,7 +46,7 @@ const rightContent = <div>
   </Container>
 </div>
 
-const Chat = () => {
+const AdminDashboard = () => {
   const [isLoading,
     setIsLoading] = useState(true)
 
@@ -60,8 +54,6 @@ const Chat = () => {
     dispatch] = useStateValue()
 
   const user = auth.user
-
-  console.log("Auth in chat", auth)
 
   useEffect(() => {
     if (auth.status == false) {
@@ -80,4 +72,4 @@ const Chat = () => {
     </div>)
 }
 
-export default Chat;
+export default AdminDashboard;

@@ -11,3 +11,11 @@ export const authenticate = (data) => {
     .post('/user/auth', data)
     .then(response => response.data)
 }
+
+export const fetchUser = (request) => {
+  return api.get('/user', {}, {
+    headers: {
+      authorization: `Bearer ${request.token}`
+    }
+  }).then(response => response.data)
+}

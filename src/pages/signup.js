@@ -14,8 +14,7 @@ import {redirectTo, navigate} from "@reach/router";
 import FullScreenLooader from "../components/fullScreenLoader";
 import {useToasts} from 'react-toast-notifications';
 import {StateProvider, useStateValue} from '../contexts/stateContext';
-import {register, facebookSignUp} from '../services/registrationService'
-import FacebookLoginButton from '../components/socialLogins/facebook';
+import {registerAdmin} from '../services/adminService'
 
 const Signup = () => {
   const [isLoading,
@@ -45,7 +44,7 @@ const Signup = () => {
   const {addToast} = useToasts()
   const onSubmit = data => {
     setIsSubmitting(true)
-    register(data).then((registration) => {
+    registerAdmin(data).then((registration) => {
       if (registration.status == true) {
 
         // Notification
@@ -197,9 +196,6 @@ const Signup = () => {
               Sign up
             </Button>
           </Form>
-        </Segment>
-        <Segment>
-          <FacebookLoginButton></FacebookLoginButton>
         </Segment>
         <Message>
           Already have an account?

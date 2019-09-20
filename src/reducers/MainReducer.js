@@ -9,7 +9,7 @@ export const mainReducer = ({ admin, member, auth }, action) => ({
 });
 
 export const initialMainState = {
-  admin: initialAminState,
+  admin: initialAdminState,
   member: initialMemberState,
   auth: initialAuthState
 }

@@ -8,7 +8,6 @@ export const authActions = {
   requestAuth: "REQUEST_AUTH",
   setLoggedOut: "SET_LOGGED_OUT",
   setAuthDetails: "SET_AUTH_DETAILS",
-  unsetAuthDetails: "UNSET_AUTH_DETAILS",
   resetToken: "RESET_TOKEN",
   initiateRequest: "INITIATE_REQUEST",
   completeRequest: "COMPLETE_REQUEST"

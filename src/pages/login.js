@@ -32,10 +32,6 @@ const Login = () => {
 
   const [{auth}, dispatch] = useStateValue()
 
-  console.log("Store", auth)
-
-  // const [auth, dispatch] = useReducer(authReducer, initialAuthState)
-
   useEffect(() => {
     setIsLoading(false)
     if (auth.status) {
@@ -52,27 +48,34 @@ const Login = () => {
   })
   const [isSubmitting,
     setIsSubmitting] = useState(false)
-  const {addToast} = useToasts()
+  const {addToast, removeToast} = useToasts()
   const onSubmit = data => {
     setIsSubmitting(true)
     authenticate(data).then((result) => {
       if (result.status == true) {
         fetchUser(result).then((user) => {
+          console.log("User from API", user)
           if (user.status == true) {
-            dispatch({
-              type: authActions.setAuthDetails,
-              data: {
-                status:true,
-                user: user.data,
-                token: result.token
-              }
-            })
+              // dispatch({
+              //   type: authActions.setAuthDetails,
+              //   data: {
+              //     status:true,
+              //     user: user.data,
+              //     token: result.token
+              //   }
+              // })
             // Notification
             addToast(`Logged In successfully`, {appearance: 'success'})
             // Set user in localstorage
             setAuthUser({status: true, user: user.data, token: result.token})
+
+            removeToast()
             // Navigate to chat
-            navigate("/chat")
+            if(user.role === 'ADMIN') {
+              navigate("/admin")
+            } else {
+              navigate("/member")
+            }
           } else {
             addToast(user.message, {appearance: 'error'})
           }

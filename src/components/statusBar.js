@@ -10,19 +10,18 @@ const StatusBar = () => {
   const [{auth}] = useStateValue()
 
   const user = auth.user
-
-  console.log("auth", auth)
+  const profile = user.profile[0]
 
   return <Container textAlign='center'>
     <Card centered fluid>
       <Card.Content>
-        <Image centered src={user.image || 'http://placeimg.com/640/480/people'} avatar/>
+        <Image centered src={profile.pictureUrl || 'http://placeimg.com/640/480/people'} avatar/>
       </Card.Content>
       <Card.Content>
-        <Card.Header>{`${user.firstName} ${user.lastName}` || 'No name'}</Card.Header>
+        <Card.Header>{`${profile.firstName} ${profile.lastName}` || 'No name'}</Card.Header>
         <Card.Meta>{user.email || 'No email'}</Card.Meta>
         <Card.Description>
-          {user.bio || 'No bio'}
+          {user.role || 'No bio'}
         </Card.Description>
       </Card.Content>
     </Card>

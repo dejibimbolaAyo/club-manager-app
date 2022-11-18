@@ -14,7 +14,7 @@
 		"react-dom": "^16.8.6",
 		"react-facebook-login": "^4.1.1",
 		"react-final-form-hooks": "^2.0.1",
-		"react-scripts": "3.0.1",
+		"react-scripts": "5.0.1",
 		"react-toast-notifications": "^2.2.4",
 		"react-twitter-auth": "0.0.13",
 		"semantic-ui-css": "^2.4.1",
